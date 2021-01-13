@@ -1,0 +1,24 @@
+<div class="container mt-5 p-5">
+  <div class="restaurant">
+    <h1><%= @restaurant.name %></h1>
+    <hr>
+    <p>🏠 <%= @restaurant.address %></p>
+    <p>📞 <%= @restaurant.phone_number %></p>
+    <p>Category: <%= @restaurant.category %></p>
+  </div>
+  <div class="reviews mt-5">
+    <h2>Reviews:</h2>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+      <div class="row d-flex justify-content-between">
+        <li class="list-group-item col-10"><%= review.content %></li>
+        <li class="list-group-item list-group-item-primary col-2 text-center"><%= "⭐️" * review.rating %></li>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+  <div class="footer mt-5">
+    <%= link_to 'Add review', new_restaurant_review_path(@restaurant), class: "btn btn-warning btn-block" %>
+    <%= link_to 'Back', restaurants_path, class: "btn btn-primary btn-block" %>
+  </div>
+</div>
